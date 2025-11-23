@@ -1,0 +1,136 @@
+services:
+    caddy:
+        image: caddy:2.9-alpine
+        container_name: caddy
+        ports:
+            - "8000:80"
+            - "4433:443"
+        volumes:
+            - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+            - caddy_data:/data
+            - caddy_config:/config
+        depends_on:
+            - backend
+            - frontend
+            - mercure
+            - minio
+            - mailhog
+            - adminer
+        networks:
+            - restoflow
+
+    backend:
+        image: dunglas/frankenphp:1.9-alpine
+        container_name: backend
+        working_dir: /app
+        volumes:
+            - ./backend:/app:delegated
+        tty: true
+        stdin_open: true
+        expose:
+            - "80"
+        depends_on:
+            - database
+            - redis
+            - minio
+            - mailhog
+            - mercure
+        networks:
+            - restoflow
+
+    frontend:
+        image: node:22-alpine
+        container_name: frontend
+        working_dir: /app
+        volumes:
+            - ./frontend:/app:delegated
+        tty: true
+        stdin_open: true
+        expose:
+            - "3000"
+        depends_on:
+            - backend
+        networks:
+            - restoflow
+
+    database:
+        image: postgres:18-alpine
+        container_name: database
+        environment:
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRES_DB=${POSTGRES_DB}
+        volumes:
+            - database_data:/var/lib/postgresql/data
+        ports:
+            - "5433:5432"
+        networks:
+            - restoflow
+
+    redis:
+        image: redis:8-alpine
+        container_name: redis
+        command: ["redis-server", "--appendonly", "yes"]
+        volumes:
+            - redis_data:/data
+        ports:
+            - "6380:6379"
+        networks:
+            - restoflow
+
+    mailhog:
+        image: mailhog/mailhog:v1.0.0
+        container_name: mailhog
+        expose:
+            - "1025"
+            - "8025"
+        networks:
+            - restoflow
+
+    minio:
+        image: minio/minio:latest
+        container_name: minio
+        environment:
+            - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+            - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+        command: ["server", "/data", "--console-address", ":9001"]
+        volumes:
+            - minio_data:/data
+        expose:
+            - "9000"
+            - "9001"
+        networks:
+            - restoflow
+
+    mercure:
+        image: dunglas/mercure
+        container_name: mercure
+        environment:
+            - MERCURE_PUBLISHER_JWT_KEY=${MERCURE_PUBLISHER_JWT_KEY}
+            - MERCURE_SUBSCRIBER_JWT_KEY=${MERCURE_SUBSCRIBER_JWT_KEY}
+            - MERCURE_CORS_ALLOWED_ORIGINS=${MERCURE_CORS_ALLOWED_ORIGINS}
+        volumes:
+            - mercure_data:/var/lib/mercure
+        expose:
+            - "80"
+        networks:
+            - restoflow
+
+    adminer:
+        image: adminer:latest
+        container_name: adminer
+        expose:
+            - "8080"
+        networks:
+            - restoflow
+
+volumes:
+    database_data:
+    redis_data:
+    minio_data:
+    mercure_data:
+    caddy_data:
+    caddy_config:
+
+networks:
+    restoflow:

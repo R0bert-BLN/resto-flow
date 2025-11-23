@@ -1,0 +1,30 @@
+# Node / NPM
+node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Laravel / PHP
+vendor
+.env
+.phpunit.result.cache
+/storage/*.key
+/storage/debugbar
+/storage/framework/cache/data
+/storage/framework/views
+/storage/logs
+
+# IDE
+.idea
+.vscode
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml

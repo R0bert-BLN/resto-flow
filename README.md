@@ -1,2 +1,1 @@
-# resto-flow-backend
-RestoFlow Backend
+# RestoFlow
