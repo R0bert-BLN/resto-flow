@@ -3,10 +3,10 @@ services:
         image: caddy:2.9-alpine
         container_name: caddy
         ports:
-            - "8000:80"
-            - "4433:443"
+            - "80:80"
+            - "443:443"
         volumes:
-            - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+            - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile
             - caddy_data:/data
             - caddy_config:/config
         depends_on:
@@ -15,16 +15,19 @@ services:
             - mercure
             - minio
             - mailhog
-            - adminer
+            - openobserve
         networks:
             - restoflow
 
     backend:
-        image: dunglas/frankenphp:1.9-alpine
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
         container_name: backend
         working_dir: /app
         volumes:
             - ./backend:/app:delegated
+            - ./docker/backend/Caddyfile:/etc/frankenphp/Caddyfile
         tty: true
         stdin_open: true
         expose:
@@ -39,11 +42,14 @@ services:
             - restoflow
 
     frontend:
-        image: node:22-alpine
+        build:
+            context: .
+            dockerfile: ./docker/frontend/Dockerfile
         container_name: frontend
         working_dir: /app
         volumes:
             - ./frontend:/app:delegated
+            - /app/node_modules
         tty: true
         stdin_open: true
         expose:
@@ -70,11 +76,11 @@ services:
     redis:
         image: redis:8-alpine
         container_name: redis
-        command: ["redis-server", "--appendonly", "yes"]
+        command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
         volumes:
             - redis_data:/data
         ports:
-            - "6380:6379"
+            - "6379:6379"
         networks:
             - restoflow
 
@@ -116,11 +122,18 @@ services:
         networks:
             - restoflow
 
-    adminer:
-        image: adminer:latest
-        container_name: adminer
+    openobserve:
+        image: openobserve/openobserve:latest
+        container_name: openobserve
+        environment:
+            - ZO_ROOT_USER_EMAIL=${ZO_ROOT_USER_EMAIL}
+            - ZO_ROOT_USER_PASSWORD=${ZO_ROOT_USER_PASSWORD}
+            - ZO_DATA_DIR=/data
+            - ZO_HTTP_PORT=5080
+        volumes:
+            - openobserve_data:/data
         expose:
-            - "8080"
+            - "5080"
         networks:
             - restoflow
 
@@ -131,6 +144,7 @@ volumes:
     mercure_data:
     caddy_data:
     caddy_config:
+    openobserve_data:
 
 networks:
     restoflow:
