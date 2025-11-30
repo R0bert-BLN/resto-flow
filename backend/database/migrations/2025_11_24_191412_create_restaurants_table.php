@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('restaurants', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->foreignUuid('tenant_id')->references('id')->on('tenants')->cascadeOnDelete();
             $table->text('description')->nullable();

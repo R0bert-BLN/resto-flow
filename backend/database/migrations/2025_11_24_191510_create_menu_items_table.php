@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('menu_items', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->string('picture')->nullable();
+            $table->text('description');
+            $table->decimal('price', 10, 2);
+            $table->foreignUuid('menu_category_id')->constrained('menu_categories')->cascadeOnDelete();
+            $table->foreignUuid('tenant_id')->constrained('tenants');
             $table->timestamps();
         });
     }
