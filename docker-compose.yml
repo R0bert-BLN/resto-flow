@@ -60,7 +60,7 @@ services:
             - restoflow
 
     database:
-        image: postgres:18-alpine
+        image: postgres:17-alpine
         container_name: database
         environment:
             - POSTGRES_USER=${POSTGRES_USER}
