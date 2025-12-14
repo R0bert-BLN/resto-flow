@@ -1,7 +1,7 @@
 app.lvh.me, *.app.lvh.me {
     tls internal
     encode gzip
-    reverse_proxy frontend:3000
+    reverse_proxy frontend:5173
 }
 
 api.lvh.me, *.api.lvh.me {

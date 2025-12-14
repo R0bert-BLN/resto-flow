@@ -2,12 +2,10 @@ FROM node:22-alpine
 
 RUN apk add --no-cache libc6-compat
 
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=development
 
 WORKDIR /app
 
-COPY frontend/package.json frontend/package-lock.json* ./
+EXPOSE 5173
 
-RUN npm install
-
-CMD ["npm", "run", "dev"]
+#CMD sh -c "npm install && npm run dev -- --host"

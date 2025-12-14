@@ -25,8 +25,8 @@ class TenancyServiceProvider extends ServiceProvider
             Events\CreatingTenant::class => [],
             Events\TenantCreated::class => [
                 JobPipeline::make([
-                    // Jobs\CreateDatabase::class,
-                    // Jobs\MigrateDatabase::class,
+                    Jobs\CreateDatabase::class,
+                    Jobs\MigrateDatabase::class,
                     // Jobs\SeedDatabase::class,
 
                     // Your own jobs to prepare the tenant.
@@ -120,19 +120,9 @@ class TenancyServiceProvider extends ServiceProvider
 
     protected function mapRoutes()
     {
-        if (!$this->app->runningInConsole() && in_array(request()->getHost(), config('tenancy.central_domains'))) {
-            return;
-        }
-
         $this->app->booted(function () {
             if (file_exists(base_path('routes/tenant.php'))) {
                 Route::namespace(static::$controllerNamespace)
-                    ->prefix('api')
-                    ->middleware([
-                        'api',
-                        \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,
-                        \Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains::class,
-                    ])
                     ->group(base_path('routes/tenant.php'));
             }
         });

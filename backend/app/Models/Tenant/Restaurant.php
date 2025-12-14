@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Tenant;
 
+use App\Models\Common\Address;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Restaurant extends Model
 {
-    use HasUuids, HasFactory, BelongsToTenant;
+    use HasUuids, HasFactory;
 
     protected $fillable = [
+        'id',
         'name',
         'description',
         'phone',
@@ -28,16 +28,8 @@ class Restaurant extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'users_restaurants');
-    }
-
-    public function tables(): HasMany
-    {
-        return $this->hasMany(Table::class);
-    }
-
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class);
+        return $this->belongsToMany(User::class, 'users_restaurants')
+            ->using(UserRestaurant::class)
+            ->withTimestamps();
     }
 }

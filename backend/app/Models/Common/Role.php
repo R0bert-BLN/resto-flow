@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Common;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    use HasUuids, HasFactory;
+    use HasUuids;
 
     protected $fillable = [
+        'id',
         'name',
     ];
 }

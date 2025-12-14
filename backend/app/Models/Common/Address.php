@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Common;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,10 +12,13 @@ class Address extends Model
     use HasUuids, HasFactory;
 
     protected $fillable = [
+        'id',
         'country',
         'city',
         'street',
         'zip_code',
+        'addressable_id',
+        'addressable_type',
     ];
 
     public function addressable(): MorphTo
