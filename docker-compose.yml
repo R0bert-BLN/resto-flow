@@ -33,11 +33,25 @@ services:
         expose:
             - "80"
         depends_on:
-            - database
+            - postgres
             - redis
             - minio
             - mailhog
             - mercure
+        networks:
+            - restoflow
+
+    queue:
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
+        container_name: queue
+        command: php artisan queue:work --tries=3
+        volumes:
+            -   ./backend:/app:delegated
+        depends_on:
+            - postgres
+            - redis
         networks:
             - restoflow
 
@@ -59,15 +73,15 @@ services:
         networks:
             - restoflow
 
-    database:
-        image: postgres:17-alpine
-        container_name: database
+    postgres:
+        image: postgres:18-alpine
+        container_name: postgres
         environment:
             - POSTGRES_USER=${POSTGRES_USER}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
             - POSTGRES_DB=${POSTGRES_DB}
         volumes:
-            - database_data:/var/lib/postgresql/data
+            - postgres_data:/var/lib/postgresql/data
         ports:
             - "5433:5432"
         networks:
@@ -138,7 +152,7 @@ services:
             - restoflow
 
 volumes:
-    database_data:
+    postgres_data:
     redis_data:
     minio_data:
     mercure_data:

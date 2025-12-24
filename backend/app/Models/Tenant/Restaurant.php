@@ -2,7 +2,7 @@
 
 namespace App\Models\Tenant;
 
-use App\Models\Common\Address;
+use App\Models\Address;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

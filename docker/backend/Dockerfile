@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:1.9-alpine
+FROM dunglas/frankenphp:1.11-alpine
 
 ARG USER=app
 ARG UID=1000

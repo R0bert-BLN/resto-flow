@@ -1,4 +1,4 @@
-FROM node:22-alpine
+FROM node:25-alpine
 
 RUN apk add --no-cache libc6-compat
 
@@ -8,4 +8,4 @@ WORKDIR /app
 
 EXPOSE 5173
 
-#CMD sh -c "npm install && npm run dev -- --host"
+CMD sh -c "npm install && npm run dev -- --host"

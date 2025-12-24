@@ -1,11 +1,15 @@
 <?php
 
-namespace Database\Factories\Admin;
+namespace Database\Factories;
 
-use App\Models\Admin\Tenant;
+use App\Models\Tenant;
+use App\Models\Tenant\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
+/**
+ * @extends Factory<Tenant>
+ */
 class TenantFactory extends Factory
 {
     public function definition(): array
@@ -21,6 +25,7 @@ class TenantFactory extends Factory
     {
         return $this->afterCreating(function (Tenant $tenant) {
             $slug = Str::slug($tenant->name);
+
             $tenant->domains()->create([
                 'domain' => $slug . '.api.lvh.me',
             ]);
