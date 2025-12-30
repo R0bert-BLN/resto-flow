@@ -14,7 +14,7 @@ services:
             - frontend
             - mercure
             - minio
-            - mailhog
+            - mailpit
             - openobserve
         networks:
             - restoflow
@@ -36,22 +36,8 @@ services:
             - postgres
             - redis
             - minio
-            - mailhog
+            - mailpit
             - mercure
-        networks:
-            - restoflow
-
-    queue:
-        build:
-            context: .
-            dockerfile: ./docker/backend/Dockerfile
-        container_name: queue
-        command: php artisan queue:work --tries=3
-        volumes:
-            -   ./backend:/app:delegated
-        depends_on:
-            - postgres
-            - redis
         networks:
             - restoflow
 
@@ -98,12 +84,19 @@ services:
         networks:
             - restoflow
 
-    mailhog:
-        image: mailhog/mailhog:v1.0.0
-        container_name: mailhog
+    mailpit:
+        image: axllent/mailpit:latest
+        container_name: mailpit
         expose:
-            - "1025"
             - "8025"
+            - "1025"
+        environment:
+            MP_MAX_MESSAGES: 5000
+            MP_DATABASE: /data/mailpit.db
+            MP_SMTP_AUTH_ACCEPT_ANY: 1
+            MP_SMTP_AUTH_ALLOW_INSECURE: 1
+        volumes:
+            - mailpit_data:/data
         networks:
             - restoflow
 
@@ -159,6 +152,7 @@ volumes:
     caddy_data:
     caddy_config:
     openobserve_data:
+    mailpit_data:
 
 networks:
     restoflow:

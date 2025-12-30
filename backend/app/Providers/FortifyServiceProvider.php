@@ -55,20 +55,8 @@ class FortifyServiceProvider extends ServiceProvider
                 return response()->json([
                     'message' => 'Authantication successfully',
                     'user' => $request->user(),
-                    'redirect' => '/dashboard',
+                    'redirect_url' => '/dashboard',
                 ]);
-            }
-        });
-
-        $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
-
-            public function toResponse($request): JsonResponse
-            {
-                return response()->json([
-                    'message' => 'Registration successfully',
-                    'user' => $request->user(),
-                    'redirect' => '/dashboard',
-                ], 201);
             }
         });
     }

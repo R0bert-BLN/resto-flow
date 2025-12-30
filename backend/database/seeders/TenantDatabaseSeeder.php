@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use App\Models\Tenant\Restaurant;
+use App\Models\Tenant\Role;
 use App\Models\Tenant\User;
 use Illuminate\Database\Seeder;
 

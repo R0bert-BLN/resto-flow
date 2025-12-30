@@ -32,10 +32,11 @@
     28 => 'Carbon\\Laravel\\ServiceProvider',
     29 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     30 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    31 => 'Stancl\\Tenancy\\TenancyServiceProvider',
-    32 => 'App\\Providers\\AppServiceProvider',
-    33 => 'App\\Providers\\FortifyServiceProvider',
-    34 => 'App\\Providers\\TenancyServiceProvider',
+    31 => 'Spatie\\QueryBuilder\\QueryBuilderServiceProvider',
+    32 => 'Stancl\\Tenancy\\TenancyServiceProvider',
+    33 => 'App\\Providers\\AppServiceProvider',
+    34 => 'App\\Providers\\FortifyServiceProvider',
+    35 => 'App\\Providers\\TenancyServiceProvider',
   ),
   'eager' => 
   array (
@@ -55,10 +56,11 @@
     13 => 'Carbon\\Laravel\\ServiceProvider',
     14 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     15 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    16 => 'Stancl\\Tenancy\\TenancyServiceProvider',
-    17 => 'App\\Providers\\AppServiceProvider',
-    18 => 'App\\Providers\\FortifyServiceProvider',
-    19 => 'App\\Providers\\TenancyServiceProvider',
+    16 => 'Spatie\\QueryBuilder\\QueryBuilderServiceProvider',
+    17 => 'Stancl\\Tenancy\\TenancyServiceProvider',
+    18 => 'App\\Providers\\AppServiceProvider',
+    19 => 'App\\Providers\\FortifyServiceProvider',
+    20 => 'App\\Providers\\TenancyServiceProvider',
   ),
   'deferred' => 
   array (

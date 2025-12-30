@@ -1,13 +1,23 @@
-app.lvh.me, *.app.lvh.me {
+restoflow.lvh.me, *.restoflow.lvh.me {
     tls internal
     encode gzip
-    reverse_proxy frontend:5173
-}
 
-api.lvh.me, *.api.lvh.me {
-    tls internal
-    reverse_proxy backend:80 {
-        header_up X-Forwarded-Proto {scheme}
+    handle /api/* {
+        reverse_proxy backend:80 {
+            header_up X-Forwarded-Proto {scheme}
+            header_up X-Forwarded-Host {host}
+        }
+    }
+
+    handle /sanctum/* {
+        reverse_proxy backend:80 {
+            header_up X-Forwarded-Proto {scheme}
+            header_up X-Forwarded-Host {host}
+        }
+    }
+
+    handle /* {
+        reverse_proxy frontend:5173
     }
 }
 
@@ -16,9 +26,9 @@ minio.lvh.me {
     reverse_proxy minio:9001
 }
 
-mailhog.lvh.me {
+mailpit.lvh.me {
     tls internal
-    reverse_proxy mailhog:8025
+    reverse_proxy mailpit:8025
 }
 
 mercure.lvh.me {

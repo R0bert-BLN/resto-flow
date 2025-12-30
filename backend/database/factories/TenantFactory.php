@@ -24,10 +24,10 @@ class TenantFactory extends Factory
     public function configure(): Factory|TenantFactory
     {
         return $this->afterCreating(function (Tenant $tenant) {
-            $slug = Str::slug($tenant->name);
+            $slug = Str::slug($tenant->name, '');
 
             $tenant->domains()->create([
-                'domain' => $slug . '.api.lvh.me',
+                'domain' => $slug . '.restoflow.' . env('APP_DOMAIN'),
             ]);
         });
     }

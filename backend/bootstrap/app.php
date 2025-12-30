@@ -5,7 +5,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
@@ -26,9 +30,9 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             Route::middleware([
-                'api',
                 InitializeTenancyByDomain::class,
-                PreventAccessFromCentralDomains::class
+                PreventAccessFromCentralDomains::class,
+                'api'
             ])
                 ->prefix('api')
                 ->group(base_path('routes/tenant.php'));

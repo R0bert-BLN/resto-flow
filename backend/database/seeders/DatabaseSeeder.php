@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Address;
-use App\Models\Role;
 use App\Models\Tenant;
+use App\Models\Tenant\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,14 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminRole = Role::create(['name' => 'admin']);
-
         User::factory()->create([
             'first_name' => 'John',
             'last_name' => 'Doe',
-            'email' => 'john.doe@restoflow.com',
+            'email' => 'admin@restoflow.com',
             'password' => bcrypt('password'),
-            'role_id' => $adminRole->id,
         ]);
 
         $tenant = Tenant::factory()->create([
