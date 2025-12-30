@@ -6,8 +6,10 @@ use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
-Route::get('/', function () {
-    return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+Route::get('/check-tenant', function () {
+    return response()->json([
+        'exists' => true
+    ]);
 });
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');

@@ -49,7 +49,6 @@ services:
         working_dir: /app
         volumes:
             - ./frontend:/app:delegated
-            - /app/node_modules
         tty: true
         stdin_open: true
         expose:
