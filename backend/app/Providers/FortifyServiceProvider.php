@@ -52,10 +52,11 @@ class FortifyServiceProvider extends ServiceProvider
 
             public function toResponse($request): JsonResponse
             {
+                // TODO: Check for user role for redirect
                 return response()->json([
                     'message' => 'Authantication successfully',
                     'user' => $request->user(),
-                    'redirect_url' => '/dashboard',
+                    'redirect_url' => '/admin/dashboard',
                 ]);
             }
         });
