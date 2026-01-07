@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware\Tenant;
 
-use App\Models\Tenant\Restaurant;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,13 +15,19 @@ class SetRestaurantContext
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $user = $request->user();
+
+        if (!$user || !method_exists($user, 'restaurants')) {
+            return $next($request);
+        }
+
         $restaurantId = $request->header('X-Restaurant-Id');
 
         if ($restaurantId) {
-            $hasAccess = $request->user()?->restaurants()->where('restaurants.id', $restaurantId)->exists();
+            $hasAccess = $user->restaurants()->where('restaurants.id', $restaurantId)->exists();
 
             if ($hasAccess) {
-                app()->instance('currentRestaurant', Restaurant::find($restaurantId));
+                app()->instance('currentRestaurantId', $restaurantId);
             }
         } else {
             abort(403, 'Access denied');

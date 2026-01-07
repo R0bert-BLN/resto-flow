@@ -1,5 +1,6 @@
 <?php
 
+use App\Logging\OpenObserveHandler;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -126,6 +127,15 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'openobserve' => [
+            'driver' => 'monolog',
+            'handler' => OpenObserveHandler::class,
+            'level' => 'debug',
+            'username' => env('OPENOBSERVE_USERNAME'),
+            'password' => env('OPENOBSERVE_PASSWORD'),
+            'url' => env('OPENOBSERVE_URL'),
+        ]
 
     ],
 

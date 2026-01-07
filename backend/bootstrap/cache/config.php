@@ -603,6 +603,7 @@
         'channels' => 
         array (
           0 => 'single',
+          1 => 'openobserve',
         ),
         'ignore_exceptions' => false,
       ),
@@ -682,6 +683,15 @@
       'emergency' => 
       array (
         'path' => '/app/storage/logs/laravel.log',
+      ),
+      'openobserve' => 
+      array (
+        'driver' => 'monolog',
+        'handler' => 'App\\Logging\\OpenObserveHandler',
+        'level' => 'debug',
+        'username' => 'admin@restoflow.com',
+        'password' => 'restoflow123',
+        'url' => 'http://openobserve:5080/api/default/default/_json',
       ),
     ),
   ),
