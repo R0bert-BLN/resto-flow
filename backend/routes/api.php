@@ -10,4 +10,11 @@ Route::get('/', function () {
 
 Route::post('/register', [TenantRegistrationController::class, 'store'])->middleware('guest');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth:sanctum');
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/auth-user', function (Request $request) {
+        return $request->user()->load('role');
+    });
+
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+});

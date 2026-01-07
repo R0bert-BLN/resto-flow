@@ -30,8 +30,11 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             Route::middleware([
-                InitializeTenancyByDomain::class,
-                PreventAccessFromCentralDomains::class,
+                \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,
+                \Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains::class,
+                \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+                \Illuminate\Session\Middleware\StartSession::class,
+                \Illuminate\Routing\Middleware\SubstituteBindings::class,
                 'api'
             ])
                 ->prefix('api')

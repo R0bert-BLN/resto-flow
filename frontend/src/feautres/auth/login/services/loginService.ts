@@ -10,7 +10,7 @@ export const loginService = {
     try {
       const response = await apiClient.get("/auth-user");
       return response.data;
-    } catch (error: any) {
+    } catch (error: unknown) {
       if (error.response?.status === 401) return null;
       throw error;
     }

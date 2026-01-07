@@ -4,6 +4,7 @@ import {TanStackRouterDevtools} from "@tanstack/router-devtools";
 import {Toaster} from "sonner";
 import type {QueryClient} from "@tanstack/react-query";
 import type {User} from "@/feautres/users/schemas/types.ts";
+import {Spinner} from "@/components/ui/spinner.tsx";
 
 interface RouterContext {
   queryClient: QueryClient;
@@ -16,11 +17,17 @@ interface RouterContext {
 
 export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
+    pendingComponent: () => (
+        <div className="h-screen w-full flex items-center justify-center bg-gray-50">
+            <div className="flex flex-col items-center gap-4">
+                <Spinner className="h-10 w-10 text-red-600" />
+            </div>
+        </div>
+    )
 })
 
 // TODO: Add guards
-// TODO: Add global loading and errors
-// TODO: Fix refresh redirect auth
+// TODO: Add global errors
 
 function RootComponent() {
   return (

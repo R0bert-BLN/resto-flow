@@ -28,7 +28,7 @@ class RestaurantController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $this->authorize('viewOnly', Restaurant::class);
+        $this->authorize('viewAny', Restaurant::class);
 
         $perPage = $request->input('per_page', 10);
         $query = $request->query();
