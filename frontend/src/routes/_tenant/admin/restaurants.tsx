@@ -1,15 +1,18 @@
 import { createFileRoute } from '@tanstack/react-router'
-import RestaurantList from "@/feautres/tenant/restaurants/components/restaurantList.tsx";
+import RestaurantList from "@/features/tenant/restaurants/components/restaurantList.tsx";
+import {useGetRestaurants} from "@/features/tenant/restaurants/hooks/restaurantQuery.ts";
 
 export const Route = createFileRoute('/_tenant/admin/restaurants')({
   component: RestaurantsPage,
 })
 
+// TODO: Finish restaurants logic
 function RestaurantsPage() {
+  const {data: restaurants} = useGetRestaurants({});
+
   return (
-    <>
-      <div className="font-semibold text-lg">Restaurants Page</div>
-      <RestaurantList/>
-    </>
+    <div>
+      <RestaurantList restaurants={restaurants}/>
+    </div>
   )
 }

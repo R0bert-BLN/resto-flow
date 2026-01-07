@@ -1,10 +1,11 @@
-import {createFileRoute, Outlet, redirect} from '@tanstack/react-router'
-import type {JSX} from "react";
-import {AdminHeader} from "@/feautres/tenant/admin/components/adminHeader.tsx";
-import {AdminSidebarMenu} from "@/feautres/tenant/admin/components/adminSidebarMenu.tsx";
+import {createFileRoute, Outlet, redirect, useRouteContext} from '@tanstack/react-router'
+import {type JSX, useEffect} from "react";
+import {AdminHeader} from "@/features/tenant/admin/components/adminHeader.tsx";
+import {AdminSidebarMenu} from "@/features/tenant/admin/components/adminSidebarMenu.tsx";
 import {SidebarProvider} from "@/components/ui/sidebar.tsx";
-import {AdminSidebarTrigger} from "@/feautres/tenant/admin/components/adminSidebarTrigger.tsx";
-import {authUserQueryOptions} from "@/feautres/auth/login/hooks/useGetAuthUser.ts";
+import {AdminSidebarTrigger} from "@/features/tenant/admin/components/adminSidebarTrigger.tsx";
+import {authUserQueryOptions, useGetAuthUser} from "@/features/auth/login/hooks/useGetAuthUser.ts";
+import {useRestaurantStore} from "@/stores/restaurantStore.ts";
 
 export const Route = createFileRoute('/_tenant/admin')({
   beforeLoad: async ({context}) => {
@@ -21,6 +22,15 @@ export const Route = createFileRoute('/_tenant/admin')({
 })
 
 function AdminLayout(): JSX.Element {
+  const {user} = useGetAuthUser();
+  const {activeRestaurantId, setRestaurantId}= useRestaurantStore();
+
+  useEffect(() => {
+    if (!activeRestaurantId && user?.restaurants && user.restaurants.length > 0) {
+      setRestaurantId(user.restaurants[0].id);
+    }
+  }, [user, activeRestaurantId, setRestaurantId])
+
   return (
     <SidebarProvider>
       <div className="flex flex-col min-h-screen w-full">

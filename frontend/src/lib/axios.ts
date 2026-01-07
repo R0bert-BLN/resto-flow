@@ -1,6 +1,7 @@
 import axios, {AxiosError, type InternalAxiosRequestConfig} from "axios";
 import snakecaseKeys from "snakecase-keys";
 import camelcaseKeys from "camelcase-keys";
+import {useRestaurantStore} from "@/stores/restaurantStore.ts";
 
 const apiClient = axios.create({
   baseURL: `${window.location.origin}/api`,
@@ -15,6 +16,12 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use((config) => {
   if (config.data && !(config.data instanceof FormData)) {
     config.data = snakecaseKeys(config.data, {deep: true})
+  }
+
+  const activeRestaurantId = useRestaurantStore.getState().activeRestaurantId;
+
+  if (activeRestaurantId) {
+    config.headers['X-Restaurant-Id'] = activeRestaurantId;
   }
 
   return config;

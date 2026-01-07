@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::MUZ19wBmf1XB1wsN',
+            '_route' => 'generated::Pht3vPd3THrprfgY',
           ),
           1 => 'restoflow.lvh.me',
           2 => 
@@ -53,7 +53,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::YjsQBVXjhslmqaQy',
+            '_route' => 'generated::ubsQqgrLcAkrnNjI',
           ),
           1 => 'restoflow.lvh.me',
           2 => 
@@ -73,7 +73,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::dxTvDd2psmTF9ZFf',
+            '_route' => 'generated::LTFcyye01rL1Lo6S',
           ),
           1 => 'restoflow.lvh.me',
           2 => 
@@ -92,7 +92,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::zWzOHdbNvuGOVORp',
+            '_route' => 'generated::1nmDVJl66bgzKsxz',
           ),
           1 => 'restoflow.lvh.me',
           2 => 
@@ -108,7 +108,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ShaYszHrt2NbJIYI',
+            '_route' => 'generated::ESRLo6fMphNzSOL0',
           ),
           1 => NULL,
           2 => 
@@ -127,7 +127,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CBbjKUOzLxHkak1a',
+            '_route' => 'generated::hUC1uktEvafA0Kr9',
           ),
           1 => 'restoflow.lvh.me',
           2 => 
@@ -144,7 +144,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::WkaEIgT105Dy7mJE',
+            '_route' => 'generated::s4VpqW8hOd4SCsqL',
           ),
           1 => NULL,
           2 => 
@@ -164,7 +164,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::tYyCcy3WiSxH2EMc',
+            '_route' => 'generated::ZhcYRo9awcWWxVji',
           ),
           1 => 'restoflow.lvh.me',
           2 => 
@@ -180,7 +180,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Ma1OgxHWKZKICuyY',
+            '_route' => 'generated::LzXl86kEXePTpEVc',
           ),
           1 => NULL,
           2 => 
@@ -199,7 +199,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::hetEXvtxHS7yRScz',
+            '_route' => 'generated::A6ZNMZvUr06xau8N',
           ),
           1 => NULL,
           2 => 
@@ -446,7 +446,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::MUZ19wBmf1XB1wsN' => 
+    'generated::Pht3vPd3THrprfgY' => 
     array (
       'methods' => 
       array (
@@ -469,7 +469,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::MUZ19wBmf1XB1wsN',
+        'as' => 'generated::Pht3vPd3THrprfgY',
       ),
       'fallback' => false,
       'defaults' => 
@@ -485,7 +485,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::YjsQBVXjhslmqaQy' => 
+    'generated::ubsQqgrLcAkrnNjI' => 
     array (
       'methods' => 
       array (
@@ -508,7 +508,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::YjsQBVXjhslmqaQy',
+        'as' => 'generated::ubsQqgrLcAkrnNjI',
       ),
       'fallback' => false,
       'defaults' => 
@@ -524,7 +524,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::dxTvDd2psmTF9ZFf' => 
+    'generated::LTFcyye01rL1Lo6S' => 
     array (
       'methods' => 
       array (
@@ -546,7 +546,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::dxTvDd2psmTF9ZFf',
+        'as' => 'generated::LTFcyye01rL1Lo6S',
       ),
       'fallback' => false,
       'defaults' => 
@@ -562,7 +562,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::zWzOHdbNvuGOVORp' => 
+    'generated::1nmDVJl66bgzKsxz' => 
     array (
       'methods' => 
       array (
@@ -584,7 +584,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::zWzOHdbNvuGOVORp',
+        'as' => 'generated::1nmDVJl66bgzKsxz',
       ),
       'fallback' => false,
       'defaults' => 
@@ -600,7 +600,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::CBbjKUOzLxHkak1a' => 
+    'generated::hUC1uktEvafA0Kr9' => 
     array (
       'methods' => 
       array (
@@ -624,7 +624,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::CBbjKUOzLxHkak1a',
+        'as' => 'generated::hUC1uktEvafA0Kr9',
       ),
       'fallback' => false,
       'defaults' => 
@@ -640,7 +640,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::tYyCcy3WiSxH2EMc' => 
+    'generated::ZhcYRo9awcWWxVji' => 
     array (
       'methods' => 
       array (
@@ -662,7 +662,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::tYyCcy3WiSxH2EMc',
+        'as' => 'generated::ZhcYRo9awcWWxVji',
       ),
       'fallback' => false,
       'defaults' => 
@@ -678,7 +678,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::hetEXvtxHS7yRScz' => 
+    'generated::A6ZNMZvUr06xau8N' => 
     array (
       'methods' => 
       array (
@@ -707,7 +707,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::hetEXvtxHS7yRScz',
+        'as' => 'generated::A6ZNMZvUr06xau8N',
       ),
       'fallback' => false,
       'defaults' => 
@@ -723,7 +723,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ShaYszHrt2NbJIYI' => 
+    'generated::ESRLo6fMphNzSOL0' => 
     array (
       'methods' => 
       array (
@@ -749,7 +749,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ShaYszHrt2NbJIYI',
+        'as' => 'generated::ESRLo6fMphNzSOL0',
       ),
       'fallback' => false,
       'defaults' => 
@@ -765,7 +765,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::WkaEIgT105Dy7mJE' => 
+    'generated::s4VpqW8hOd4SCsqL' => 
     array (
       'methods' => 
       array (
@@ -784,16 +784,17 @@ app('router')->setCompiledRoutes(
           4 => 'Illuminate\\Routing\\Middleware\\SubstituteBindings',
           5 => 'api',
           6 => 'auth:sanctum',
+          7 => 'App\\Http\\Middleware\\Tenant\\SetRestaurantContext',
         ),
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:99:"function (\\Illuminate\\Http\\Request $request) {
-        return $request->user()->load(\'role\');
+        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:114:"function (\\Illuminate\\Http\\Request $request) {
+        return $request->user()->load(\'role\', \'restaurants\');
     }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000008ef0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::WkaEIgT105Dy7mJE',
+        'as' => 'generated::s4VpqW8hOd4SCsqL',
       ),
       'fallback' => false,
       'defaults' => 
@@ -809,7 +810,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Ma1OgxHWKZKICuyY' => 
+    'generated::LzXl86kEXePTpEVc' => 
     array (
       'methods' => 
       array (
@@ -827,6 +828,7 @@ app('router')->setCompiledRoutes(
           4 => 'Illuminate\\Routing\\Middleware\\SubstituteBindings',
           5 => 'api',
           6 => 'auth:sanctum',
+          7 => 'App\\Http\\Middleware\\Tenant\\SetRestaurantContext',
         ),
         'uses' => 'Laravel\\Fortify\\Http\\Controllers\\AuthenticatedSessionController@destroy',
         'controller' => 'Laravel\\Fortify\\Http\\Controllers\\AuthenticatedSessionController@destroy',
@@ -835,7 +837,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Ma1OgxHWKZKICuyY',
+        'as' => 'generated::LzXl86kEXePTpEVc',
       ),
       'fallback' => false,
       'defaults' => 
@@ -870,10 +872,11 @@ app('router')->setCompiledRoutes(
           4 => 'Illuminate\\Routing\\Middleware\\SubstituteBindings',
           5 => 'api',
           6 => 'auth:sanctum',
+          7 => 'App\\Http\\Middleware\\Tenant\\SetRestaurantContext',
         ),
         'as' => 'restaurants.index',
-        'uses' => 'App\\Http\\Controllers\\RestaurantController@index',
-        'controller' => 'App\\Http\\Controllers\\RestaurantController@index',
+        'uses' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@index',
+        'controller' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@index',
         'namespace' => NULL,
         'prefix' => 'api/',
         'where' => 
@@ -912,10 +915,11 @@ app('router')->setCompiledRoutes(
           4 => 'Illuminate\\Routing\\Middleware\\SubstituteBindings',
           5 => 'api',
           6 => 'auth:sanctum',
+          7 => 'App\\Http\\Middleware\\Tenant\\SetRestaurantContext',
         ),
         'as' => 'restaurants.store',
-        'uses' => 'App\\Http\\Controllers\\RestaurantController@store',
-        'controller' => 'App\\Http\\Controllers\\RestaurantController@store',
+        'uses' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@store',
+        'controller' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@store',
         'namespace' => NULL,
         'prefix' => 'api/',
         'where' => 
@@ -955,10 +959,11 @@ app('router')->setCompiledRoutes(
           4 => 'Illuminate\\Routing\\Middleware\\SubstituteBindings',
           5 => 'api',
           6 => 'auth:sanctum',
+          7 => 'App\\Http\\Middleware\\Tenant\\SetRestaurantContext',
         ),
         'as' => 'restaurants.show',
-        'uses' => 'App\\Http\\Controllers\\RestaurantController@show',
-        'controller' => 'App\\Http\\Controllers\\RestaurantController@show',
+        'uses' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@show',
+        'controller' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@show',
         'namespace' => NULL,
         'prefix' => 'api/',
         'where' => 
@@ -998,10 +1003,11 @@ app('router')->setCompiledRoutes(
           4 => 'Illuminate\\Routing\\Middleware\\SubstituteBindings',
           5 => 'api',
           6 => 'auth:sanctum',
+          7 => 'App\\Http\\Middleware\\Tenant\\SetRestaurantContext',
         ),
         'as' => 'restaurants.update',
-        'uses' => 'App\\Http\\Controllers\\RestaurantController@update',
-        'controller' => 'App\\Http\\Controllers\\RestaurantController@update',
+        'uses' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@update',
+        'controller' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@update',
         'namespace' => NULL,
         'prefix' => 'api/',
         'where' => 
@@ -1040,10 +1046,11 @@ app('router')->setCompiledRoutes(
           4 => 'Illuminate\\Routing\\Middleware\\SubstituteBindings',
           5 => 'api',
           6 => 'auth:sanctum',
+          7 => 'App\\Http\\Middleware\\Tenant\\SetRestaurantContext',
         ),
         'as' => 'restaurants.destroy',
-        'uses' => 'App\\Http\\Controllers\\RestaurantController@destroy',
-        'controller' => 'App\\Http\\Controllers\\RestaurantController@destroy',
+        'uses' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Tenant\\RestaurantController@destroy',
         'namespace' => NULL,
         'prefix' => 'api/',
         'where' => 

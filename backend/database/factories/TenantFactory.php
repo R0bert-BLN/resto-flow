@@ -2,8 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Tenant;
-use App\Models\Tenant\User;
+use App\Models\Central\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

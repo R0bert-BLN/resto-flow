@@ -3,8 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Address;
-use App\Models\Tenant;
-use App\Models\Tenant\Role;
+use App\Models\Central\Tenant;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 

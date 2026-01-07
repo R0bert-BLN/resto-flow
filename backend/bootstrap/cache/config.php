@@ -1,4 +1,54 @@
 <?php return array (
+  'concurrency' => 
+  array (
+    'default' => 'process',
+  ),
+  'hashing' => 
+  array (
+    'driver' => 'bcrypt',
+    'bcrypt' => 
+    array (
+      'rounds' => '12',
+      'verify' => true,
+      'limit' => NULL,
+    ),
+    'argon' => 
+    array (
+      'memory' => 65536,
+      'threads' => 1,
+      'time' => 4,
+      'verify' => true,
+    ),
+    'rehash_on_login' => true,
+  ),
+  'cors' => 
+  array (
+    'paths' => 
+    array (
+      0 => 'api/*',
+      1 => 'sanctum/csrf-cookie',
+    ),
+    'allowed_methods' => 
+    array (
+      0 => '*',
+    ),
+    'allowed_origins' => 
+    array (
+      0 => '*',
+    ),
+    'allowed_origins_patterns' => 
+    array (
+    ),
+    'allowed_headers' => 
+    array (
+      0 => '*',
+    ),
+    'exposed_headers' => 
+    array (
+    ),
+    'max_age' => 0,
+    'supports_credentials' => false,
+  ),
   'broadcasting' => 
   array (
     'default' => 'log',
@@ -54,56 +104,6 @@
         'driver' => 'null',
       ),
     ),
-  ),
-  'cors' => 
-  array (
-    'paths' => 
-    array (
-      0 => 'api/*',
-      1 => 'sanctum/csrf-cookie',
-    ),
-    'allowed_methods' => 
-    array (
-      0 => '*',
-    ),
-    'allowed_origins' => 
-    array (
-      0 => '*',
-    ),
-    'allowed_origins_patterns' => 
-    array (
-    ),
-    'allowed_headers' => 
-    array (
-      0 => '*',
-    ),
-    'exposed_headers' => 
-    array (
-    ),
-    'max_age' => 0,
-    'supports_credentials' => false,
-  ),
-  'hashing' => 
-  array (
-    'driver' => 'bcrypt',
-    'bcrypt' => 
-    array (
-      'rounds' => '12',
-      'verify' => true,
-      'limit' => NULL,
-    ),
-    'argon' => 
-    array (
-      'memory' => 65536,
-      'threads' => 1,
-      'time' => 4,
-      'verify' => true,
-    ),
-    'rehash_on_login' => true,
-  ),
-  'concurrency' => 
-  array (
-    'default' => 'process',
   ),
   'view' => 
   array (
@@ -909,9 +909,9 @@
   ),
   'tenancy' => 
   array (
-    'tenant_model' => 'App\\Models\\Tenant',
+    'tenant_model' => 'App\\Models\\Central\\Tenant',
     'id_generator' => 'Stancl\\Tenancy\\UUIDGenerator',
-    'domain_model' => 'App\\Models\\Domain',
+    'domain_model' => 'App\\Models\\Central\\Domain',
     'central_domains' => 
     array (
       0 => 'restoflow.lvh.me',
