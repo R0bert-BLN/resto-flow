@@ -3,9 +3,12 @@
 namespace App\Policies\Tenant;
 
 use App\Models\Tenant\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RestaurantPolicy
 {
+    use HandlesAuthorization;
+
     public function viewAny(): bool
     {
         return true;

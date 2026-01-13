@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\Tenant;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RestaurantRequest extends FormRequest
+class MenuRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,14 +15,12 @@ class RestaurantRequest extends FormRequest
     {
         $rules = [
             'description' => ['nullable', 'string', 'max:1000'],
-            'phone' => ['nullable', 'string', 'max:20'],
-            'logo' => ['nullable', 'string', 'url'],
         ];
 
         if ($this->isMethod('POST')) {
-            $rules['name'] = ['required', 'string', 'max:255'];
+            $rules['name'] = ['required', 'string'];
         } else {
-            $rules['name'] = ['sometimes', 'nullable', 'string', 'max:255'];
+            $rules['name'] = ['sometimes', 'nullable', 'string'];
         }
 
         return $rules;
