@@ -1,18 +1,18 @@
 import {keepPreviousData, useQuery} from "@tanstack/react-query";
-import {restaurantService} from "@/features/tenant/restaurants/services/restaurantService.ts";
 import type {SortingState} from "@tanstack/react-table";
 import {type Filter, useQueryFilters} from "@/hooks/queryFilters.ts";
 import {buildQueryParams} from "@/lib/queryBuilder.ts";
 import {useQueryPagination} from "@/hooks/queryPagination.ts";
 import {useQuerySort} from "@/hooks/querySort.ts";
+import {menuService} from "@/features/tenant/menus/services/menuService.ts";
 
-interface RestaurantQueryParams {
+interface MenuQueryParams {
   initialSize?: number;
   initialFilters?: Record<string, Filter>;
   initialSorting?: SortingState;
 }
 
-export const useGetRestaurants = ({initialSize, initialFilters, initialSorting}: RestaurantQueryParams) => {
+export const useGetMenus = ({initialSize, initialFilters, initialSorting}: MenuQueryParams) => {
   const pagination = useQueryPagination(initialSize);
   const filters = useQueryFilters(initialFilters);
   const sorting = useQuerySort(initialSorting);
@@ -24,8 +24,8 @@ export const useGetRestaurants = ({initialSize, initialFilters, initialSorting}:
   });
 
   const query = useQuery({
-    queryKey: ["restaurants", queryParams],
-    queryFn: () => restaurantService.getRestaurants(queryParams),
+    queryKey: ["menus", queryParams],
+    queryFn: () => menuService.getMenus(queryParams),
     placeholderData: keepPreviousData,
   });
 
@@ -40,10 +40,10 @@ export const useGetRestaurants = ({initialSize, initialFilters, initialSorting}:
   }
 }
 
-export const useGetRestaurant = (id: string) => {
+export const useGetMenuById = (id: string) => {
   return useQuery({
-    queryKey: ["restaurants", id],
-    queryFn: () => restaurantService.getRestaurant(id),
+    queryKey: ["menus", id],
+    queryFn: () => menuService.getMenuById(id),
     enabled: !!id,
   })
 }

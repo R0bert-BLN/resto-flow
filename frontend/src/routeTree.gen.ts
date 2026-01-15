@@ -19,8 +19,9 @@ import { Route as TenantAdminStaffRouteImport } from './routes/_tenant/admin/sta
 import { Route as TenantAdminSettingsRouteImport } from './routes/_tenant/admin/settings'
 import { Route as TenantAdminRestaurantsRouteImport } from './routes/_tenant/admin/restaurants'
 import { Route as TenantAdminOrdersRouteImport } from './routes/_tenant/admin/orders'
-import { Route as TenantAdminMenuRouteImport } from './routes/_tenant/admin/menu'
 import { Route as TenantAdminDashboardRouteImport } from './routes/_tenant/admin/dashboard'
+import { Route as TenantAdminMenuIndexRouteImport } from './routes/_tenant/admin/menu/index'
+import { Route as TenantAdminMenuItemsRouteImport } from './routes/_tenant/admin/menu/items'
 
 const TenantRoute = TenantRouteImport.update({
   id: '/_tenant',
@@ -70,14 +71,19 @@ const TenantAdminOrdersRoute = TenantAdminOrdersRouteImport.update({
   path: '/orders',
   getParentRoute: () => TenantAdminRoute,
 } as any)
-const TenantAdminMenuRoute = TenantAdminMenuRouteImport.update({
-  id: '/menu',
-  path: '/menu',
-  getParentRoute: () => TenantAdminRoute,
-} as any)
 const TenantAdminDashboardRoute = TenantAdminDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => TenantAdminRoute,
+} as any)
+const TenantAdminMenuIndexRoute = TenantAdminMenuIndexRouteImport.update({
+  id: '/menu/',
+  path: '/menu/',
+  getParentRoute: () => TenantAdminRoute,
+} as any)
+const TenantAdminMenuItemsRoute = TenantAdminMenuItemsRouteImport.update({
+  id: '/menu/items',
+  path: '/menu/items',
   getParentRoute: () => TenantAdminRoute,
 } as any)
 
@@ -86,24 +92,26 @@ export interface FileRoutesByFullPath {
   '/login': typeof TenantLoginRoute
   '/': typeof CentralIndexRoute
   '/admin/dashboard': typeof TenantAdminDashboardRoute
-  '/admin/menu': typeof TenantAdminMenuRoute
   '/admin/orders': typeof TenantAdminOrdersRoute
   '/admin/restaurants': typeof TenantAdminRestaurantsRoute
   '/admin/settings': typeof TenantAdminSettingsRoute
   '/admin/staff': typeof TenantAdminStaffRoute
   '/admin/tables': typeof TenantAdminTablesRoute
+  '/admin/menu/items': typeof TenantAdminMenuItemsRoute
+  '/admin/menu': typeof TenantAdminMenuIndexRoute
 }
 export interface FileRoutesByTo {
   '/admin': typeof TenantAdminRouteWithChildren
   '/login': typeof TenantLoginRoute
   '/': typeof CentralIndexRoute
   '/admin/dashboard': typeof TenantAdminDashboardRoute
-  '/admin/menu': typeof TenantAdminMenuRoute
   '/admin/orders': typeof TenantAdminOrdersRoute
   '/admin/restaurants': typeof TenantAdminRestaurantsRoute
   '/admin/settings': typeof TenantAdminSettingsRoute
   '/admin/staff': typeof TenantAdminStaffRoute
   '/admin/tables': typeof TenantAdminTablesRoute
+  '/admin/menu/items': typeof TenantAdminMenuItemsRoute
+  '/admin/menu': typeof TenantAdminMenuIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -113,12 +121,13 @@ export interface FileRoutesById {
   '/_tenant/login': typeof TenantLoginRoute
   '/_central/': typeof CentralIndexRoute
   '/_tenant/admin/dashboard': typeof TenantAdminDashboardRoute
-  '/_tenant/admin/menu': typeof TenantAdminMenuRoute
   '/_tenant/admin/orders': typeof TenantAdminOrdersRoute
   '/_tenant/admin/restaurants': typeof TenantAdminRestaurantsRoute
   '/_tenant/admin/settings': typeof TenantAdminSettingsRoute
   '/_tenant/admin/staff': typeof TenantAdminStaffRoute
   '/_tenant/admin/tables': typeof TenantAdminTablesRoute
+  '/_tenant/admin/menu/items': typeof TenantAdminMenuItemsRoute
+  '/_tenant/admin/menu/': typeof TenantAdminMenuIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -127,24 +136,26 @@ export interface FileRouteTypes {
     | '/login'
     | '/'
     | '/admin/dashboard'
-    | '/admin/menu'
     | '/admin/orders'
     | '/admin/restaurants'
     | '/admin/settings'
     | '/admin/staff'
     | '/admin/tables'
+    | '/admin/menu/items'
+    | '/admin/menu'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/admin'
     | '/login'
     | '/'
     | '/admin/dashboard'
-    | '/admin/menu'
     | '/admin/orders'
     | '/admin/restaurants'
     | '/admin/settings'
     | '/admin/staff'
     | '/admin/tables'
+    | '/admin/menu/items'
+    | '/admin/menu'
   id:
     | '__root__'
     | '/_central'
@@ -153,12 +164,13 @@ export interface FileRouteTypes {
     | '/_tenant/login'
     | '/_central/'
     | '/_tenant/admin/dashboard'
-    | '/_tenant/admin/menu'
     | '/_tenant/admin/orders'
     | '/_tenant/admin/restaurants'
     | '/_tenant/admin/settings'
     | '/_tenant/admin/staff'
     | '/_tenant/admin/tables'
+    | '/_tenant/admin/menu/items'
+    | '/_tenant/admin/menu/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -238,18 +250,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TenantAdminOrdersRouteImport
       parentRoute: typeof TenantAdminRoute
     }
-    '/_tenant/admin/menu': {
-      id: '/_tenant/admin/menu'
-      path: '/menu'
-      fullPath: '/admin/menu'
-      preLoaderRoute: typeof TenantAdminMenuRouteImport
-      parentRoute: typeof TenantAdminRoute
-    }
     '/_tenant/admin/dashboard': {
       id: '/_tenant/admin/dashboard'
       path: '/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof TenantAdminDashboardRouteImport
+      parentRoute: typeof TenantAdminRoute
+    }
+    '/_tenant/admin/menu/': {
+      id: '/_tenant/admin/menu/'
+      path: '/menu'
+      fullPath: '/admin/menu'
+      preLoaderRoute: typeof TenantAdminMenuIndexRouteImport
+      parentRoute: typeof TenantAdminRoute
+    }
+    '/_tenant/admin/menu/items': {
+      id: '/_tenant/admin/menu/items'
+      path: '/menu/items'
+      fullPath: '/admin/menu/items'
+      preLoaderRoute: typeof TenantAdminMenuItemsRouteImport
       parentRoute: typeof TenantAdminRoute
     }
   }
@@ -268,22 +287,24 @@ const CentralRouteWithChildren =
 
 interface TenantAdminRouteChildren {
   TenantAdminDashboardRoute: typeof TenantAdminDashboardRoute
-  TenantAdminMenuRoute: typeof TenantAdminMenuRoute
   TenantAdminOrdersRoute: typeof TenantAdminOrdersRoute
   TenantAdminRestaurantsRoute: typeof TenantAdminRestaurantsRoute
   TenantAdminSettingsRoute: typeof TenantAdminSettingsRoute
   TenantAdminStaffRoute: typeof TenantAdminStaffRoute
   TenantAdminTablesRoute: typeof TenantAdminTablesRoute
+  TenantAdminMenuItemsRoute: typeof TenantAdminMenuItemsRoute
+  TenantAdminMenuIndexRoute: typeof TenantAdminMenuIndexRoute
 }
 
 const TenantAdminRouteChildren: TenantAdminRouteChildren = {
   TenantAdminDashboardRoute: TenantAdminDashboardRoute,
-  TenantAdminMenuRoute: TenantAdminMenuRoute,
   TenantAdminOrdersRoute: TenantAdminOrdersRoute,
   TenantAdminRestaurantsRoute: TenantAdminRestaurantsRoute,
   TenantAdminSettingsRoute: TenantAdminSettingsRoute,
   TenantAdminStaffRoute: TenantAdminStaffRoute,
   TenantAdminTablesRoute: TenantAdminTablesRoute,
+  TenantAdminMenuItemsRoute: TenantAdminMenuItemsRoute,
+  TenantAdminMenuIndexRoute: TenantAdminMenuIndexRoute,
 }
 
 const TenantAdminRouteWithChildren = TenantAdminRoute._addFileChildren(

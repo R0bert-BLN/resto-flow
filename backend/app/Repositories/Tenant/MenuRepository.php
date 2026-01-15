@@ -15,11 +15,9 @@ class MenuRepository
         return QueryBuilder::for(Menu::class)
             ->where('restaurant_id', app('currentRestaurantId'))
             ->allowedFilters([
-                'name',
-                AllowedFilter::partial('description')
+                AllowedFilter::partial('name')
             ])
             ->allowedSorts([
-                'name',
                 AllowedSort::field('created_at', 'created_at')
             ])
             ->defaultSort('-created_at')

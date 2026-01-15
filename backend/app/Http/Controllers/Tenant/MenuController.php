@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
+// TODO: Add authorization
 class MenuController extends Controller
 {
     use AuthorizesRequests;
@@ -24,13 +25,8 @@ class MenuController extends Controller
     {
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $this->authorize('viewAny', Menu::class);
-
         $perPage = $request->input('per_page', 10);
         $query = $request->query();
 
@@ -39,12 +35,8 @@ class MenuController extends Controller
         return MenuResource::collection($menu);
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function store(MenuRequest $request): JsonResponse
     {
-        $this->authorize('create', Menu::class);
         $menu = $this->menuService->create(MenuDto::fromRequest($request));
 
         return response()->json([
@@ -52,12 +44,9 @@ class MenuController extends Controller
         ], 201);
     }
 
-    /**
-     * @throws AuthorizationException
-     */
+
     public function show(string $id): JsonResponse
     {
-        $this->authorize('viewOnly', Menu::class);
         $menu = $this->menuService->getById($id);
 
         return response()->json([
@@ -65,12 +54,8 @@ class MenuController extends Controller
         ]);
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function update(MenuRequest $request, string $id): JsonResponse
     {
-        $this->authorize('update', Menu::class);
         $menu = $this->menuService->update($id, MenuDto::fromRequest($request));
 
         return response()->json([
@@ -78,12 +63,8 @@ class MenuController extends Controller
         ]);
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function destroy(string $id): JsonResponse
     {
-        $this->authorize('delete', Menu::class);
         $this->menuService->delete($id);
 
         return response()->json([], 204);
